@@ -24,6 +24,7 @@ export default abstract class GameObject {
         this.name = name;
         this.visible = true;
         this.opacity = 1;
+        this.image = image;
 
         this.init();
     }
@@ -33,12 +34,12 @@ export default abstract class GameObject {
     }
 
     public draw (deltaTime?: number) {
-        /*const image = new Image()
+        const image = new Image()
         image.src = this.image;
         if (this.visible)
-            engine.window.drawImage(image, this.position, this.width, this.height) */
-        if (this.visible)
-            engine.window.fillRect(this.position, this.width, this.height, this.color)
+            engine.window.drawImage(image, this.position, this.width, this.height)
+        /* if (this.visible)
+            engine.window.fillRect(this.position, this.width, this.height, this.color) */
     }
 
     abstract start();

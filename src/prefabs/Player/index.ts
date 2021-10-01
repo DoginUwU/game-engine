@@ -11,7 +11,7 @@ export default class Player extends GameObject {
     camera = new Camera()
 
     constructor() {
-        super('Player', 'player.png');
+        super('Player', './images/player.png');
         this.velocity = new Vector2(0, 0)
         this.color = '#5f5cff'
     }
