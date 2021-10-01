@@ -41,7 +41,7 @@ export default abstract class GameObject {
         /* if (this.visible)
             engine.window.fillRect(this.position, this.width, this.height, this.color) */
     }
-
+    
     abstract start();
     abstract update(deltaTime?: number);
 }

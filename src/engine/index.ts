@@ -4,15 +4,17 @@ import { DeltaTime } from "./deltaTime";
 import GameObject from "./gameObject";
 import Window from "./window";
 import Vector2 from "./vector2";
+import Map from "./map";
 
 interface EngineOptions {
 
 }
 
 export default class Engine {
-    window = {} as Window;
-    options = {} as EngineOptions;
+    window: Window;
+    options: EngineOptions;
     player = new Player();
+    map = new Map("World", 10000, 10000);
     static deltaTime?: DeltaTime = undefined;
 
     static objects: Array<GameObject> = [];
@@ -50,8 +52,8 @@ export default class Engine {
     private update () {
         this.window.update()
         const canvas = this.window.getCanvas();
-        var camX = this.clamp(-this.player.camera.position.x + canvas.width / 2 - 50, 0, 10000 - canvas.width);
-        var camY = this.clamp(-this.player.camera.position.y + canvas.height / 2, 0, 10000 - canvas.height);
+        var camX = this.clamp(-this.player.camera.position.x + canvas.width / 2 - 50, 0, this.map.width - canvas.width);
+        var camY = this.clamp(-this.player.camera.position.y + canvas.height / 2, 0, this.map.height - canvas.height);
         this.window.getContext().translate(camX, camY);
         requestAnimationFrame(() => Engine.updateObjects())
     }
